@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/cerulean/bootstrap.min.css"
+        integrity="sha512-lojUNdOGZXJLeNdWWK4EcsIw7nnpRdi/KQGxKDNNGToPERJzztZlyQ6E/wUvuoNbc1M0TuBiNVBTLxU29zep9g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Weather App</title>
+</head>
+
+<body style="background-color:aqua">
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-primary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarExample01">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://openweathermap.org">OpenWeather</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Background image -->
+        <div class="p-5 text-center bg-image" style="
+            background-image: url('https://png.pngtree.com/png-clipart/20190904/original/pngtree-sunny-weather-icon-png-image_4490965.jpg');
+            height: 600px;">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white">
+                        <h1 class="mb-3">Weather App</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Background image -->
+    </header>
+            <div class="container">
+            <nav class="navbar navbar-expand-lg  navbar-dark bg-primary" style="text-align: center;">
+                <form method="post" class="col-md">
+                {% csrf_token %}
+                <div class=" input-group">
+
+                    <input type="text" class="form-control" name="city" placeholder="Choose Your City ...">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+        </div>
+        <div class="container">
+            <div class="row col-12">
+                <form>
+                    </nav>
+                    <br> <br>
+                    <div class="row">
+                        {% if country_code and coordinate and temp and pressure and humidity %}
+                        <div class="col d-flex justify-content-center" ">
+                            <div class=" card text-white bg-danger mb-6">
+                            <div class=" card-body">
+                                <h4><span class="badge">City / Country:</span> {{city_name}} {{country_code}}</h4>
+                                <h4><span class="badge">Coordinates [X,Y] :</span> {{coordinate}}</h4>
+                                <h4><span class="badge">Temperature in Celsius :</span> {{temp}}</h4>
+                                <h4><span class="badge">Pressure :</span> {{pressure}} </h4>
+                                <h4><span class="badge">Humidity : </span> {{humidity}}</h4>
+                                <h4><span class="badge">Forecast : </span> {{main}} <img
+                                        src="http://openweathermap.org/img/w/{{icon}}.png" alt="Image"
+                                        style="width:70px"></h4>
+                                <h4><span class="badge">Description : </span> {{description}}</h4>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+            </div>
+
+</body>
+
+</html>
